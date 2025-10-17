@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>오늘의 자기기록</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>나의 하루 리포트</h1>
+            <p>오늘의 나를 객관적·감정적으로 기록해보세요.</p>
+        </header>
+
+        <main>
+            <form id="record-form">
+                <div class="form-group">
+                    <label for="score">1️⃣ 오늘의 나의 칭찬 점수는?</label>
+                    <select id="score" name="score" required>
+                        <option value="">점수를 선택하세요</option>
+                        </select>
+                </div>
+
+                <div class="form-group">
+                    <label>2️⃣ 오늘의 나의 기분은?</label>
+                    <div class="mood-selector">
+                        <input type="radio" id="mood1" name="mood" value="편안" checked/>
+                        <label for="mood1">😌 편안</label>
+
+                        <input type="radio" id="mood2" name="mood" value="기쁨" />
+                        <label for="mood2">☺️ 기쁨</label>
+
+                        <input type="radio" id="mood3" name="mood" value="보통" />
+                        <label for="mood3">🫤 보통</label>
+
+                        <input type="radio" id="mood4" name="mood" value="화남" />
+                        <label for="mood4">😤 화남</label>
+
+                        <input type="radio" id="mood5" name="mood" value="슬픔" />
+                        <label for="mood5">😢 슬픔</label>
+                    </div>
+                    <p class="hint">※ 점수(1번)는 ‘이성적 평가’, 기분은 ‘감정적 상태’를 표현합니다.</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="word">3️⃣ 오늘 하루를 나타내는 단어 하나</label>
+                    <input
+                        type="text"
+                        id="word"
+                        name="word"
+                        maxlength="20"
+                        placeholder="예: 차분함, 성취감, 지침"
+                        required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="summary">4️⃣ 오늘 나에 대한 한 줄 요약</label>
+                    <input
+                        type="text"
+                        id="summary"
+                        name="summary"
+                        maxlength="30"
+                        placeholder="예: 오늘도 괜찮았어"
+                        required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="praise">5️⃣ 오늘의 나에게 해주고 싶은 칭찬과 격려 한마디</label>
+                    <textarea
+                        id="praise"
+                        name="praise"
+                        rows="3"
+                        placeholder="오늘 내가 잘한 점은 ___이다."
+                    ></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="helpful">6️⃣ 나에게 도움이 되었던 행동이나 생각이 있다면 공유해 주세요</label>
+                    <textarea
+                        id="helpful"
+                        name="helpful"
+                        rows="3"
+                        placeholder="예: 산책하면서 머리가 맑아졌어요."
+                    ></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="nickname">7️⃣ 닉네임을 입력해주세요</label>
+                    <input
+                        type="text"
+                        id="nickname"
+                        name="nickname"
+                        maxlength="10"
+                        placeholder="예: 익명의 학생"
+                        required
+                    />
+                </div>
+
+                <button type="submit">기록하기</button>
+            </form>
+
+            <section class="records-section">
+                <div class="section-header">
+                    <h2>우리의 기록들</h2>
+                    <button id="export-excel">엑셀로 내보내기</button>
+                </div>
+                <div class="records-list-container">
+                    <div class="records-header">
+                        <div>닉네임</div>
+                        <div>점수</div>
+                        <div>기분</div>
+                        <div>단어</div>
+                        <div>요약</div>
+                        <div>칭찬/격려</div>
+                        <div>도움된점</div>
+                    </div>
+                    <div id="records-container">
+                        </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer>
+            <p>&copy; 2025 나의 하루 리포트. All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

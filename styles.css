@@ -1,0 +1,260 @@
+/* 폰트 및 기본 설정 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+
+:root {
+    --primary-color: #6a7ba2; /* 주요 색상: 네이비 */
+    --secondary-color: #7ec8e3; /* 보조 색상: 스카이블루 */
+    --background-color: #f8f8fa; /* 배경색 */
+    --card-background: #FFFFFF;
+    --text-color: #333;
+    --border-color: #ddd;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 900px; /* 전체 너비 확장 */
+    margin: 40px auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+/* 폼 섹션 스타일 */
+#record-form {
+    background-color: var(--card-background);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    margin-bottom: 40px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+    font-size: 1.1em;
+}
+
+input[type="text"], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Noto Sans KR', sans-serif;
+    box-sizing: border-box;
+}
+
+.hint {
+    font-size: 0.8rem;
+    color: #999;
+    margin-top: 5px;
+}
+
+/* 기분 선택 버튼 스타일 */
+.mood-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.mood-selector input[type="radio"] {
+    display: none;
+}
+
+.mood-selector label {
+    padding: 10px 18px;
+    border: 2px solid var(--border-color);
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-weight: 500;
+    user-select: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.mood-selector input[type="radio"]:checked + label {
+    background-color: var(--secondary-color);
+    color: white;
+    border-color: var(--secondary-color);
+    font-weight: 700;
+    transform: scale(1.05);
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #55668c;
+}
+
+/* 📝 기록 목록 섹션 (표 스타일) */
+.records-section {
+    background-color: var(--card-background);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.records-section h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+    font-size: 1.5em;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#export-excel {
+    padding: 8px 15px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* 표 그리드 레이아웃 */
+.records-header, .record-row {
+    display: grid;
+    /* 닉네임/점수/기분/단어/요약/칭찬/도움 */
+    grid-template-columns: 80px 50px 80px 100px 1fr 1fr 1fr;
+    gap: 5px;
+    padding: 10px 5px;
+    align-items: center;
+    font-size: 0.85rem;
+}
+
+.records-header {
+    font-weight: 700;
+    background-color: #f0f0ff; /* 헤더 배경색 */
+    border-bottom: 2px solid var(--primary-color);
+    border-top: 2px solid var(--primary-color);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.record-row {
+    border-bottom: 1px dashed var(--border-color);
+}
+
+.record-row:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.record-row:hover {
+    background-color: #eef2f9;
+}
+
+.records-header > div, .record-row > div {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 5px;
+}
+
+/* 닉네임, 점수, 기분은 중앙 정렬 */
+.record-row .record-nickname,
+.record-row .record-score,
+.record-row .record-mood {
+    text-align: center;
+}
+
+.record-row .record-mood {
+    font-size: 1.2rem;
+}
+
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9rem;
+    color: #757575;
+}
+
+/* 모바일 반응형 (표를 카드로 변환) */
+@media (max-width: 600px) {
+    .records-header {
+        display: none;
+    }
+    .record-row {
+        grid-template-columns: 1fr;
+        gap: 5px;
+        margin-bottom: 15px;
+        padding: 15px;
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    .record-row > div {
+        white-space: normal;
+        padding: 0;
+    }
+    .record-row > div::before {
+        content: attr(data-label) ": ";
+        font-weight: bold;
+        color: var(--primary-color);
+        margin-right: 5px;
+    }
+    .record-summary, .record-praise, .record-helpful {
+            /* 긴 텍스트는 폰트 크기를 조금 줄여 가독성 확보 */
+        font-size: 0.9rem;
+    }
+    /* 모바일에서 버튼이 겹치지 않도록 */
+    .section-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+}
